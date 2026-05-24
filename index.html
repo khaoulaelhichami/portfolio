@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio — Khaoula Elhichami</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio de Khaoula Elhichami — Étudiante en génie informatique, projets, CV et contact pour stage">
+    <style>
+      :root {
+        --surface: rgba(255, 255, 255, 0.9);
+        --surface-strong: #ffffff;
+        --border-soft: rgba(148, 163, 184, 0.22);
+        --text-muted: #64748b;
+        --primary: #2563eb;
+        --primary-strong: #0f172a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Sora', system-ui, -apple-system, sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      h1 { font-size: 2.5rem; line-height: 1.2; }
+      h2 { font-size: 1.875rem; line-height: 1.2; }
+      h3 { font-size: 1.25rem; line-height: 1.3; }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes floatSoft {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes glow {
+        0%, 100% {
+          box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+      }
+
+      .animate-fadeUp {
+        animation: fadeUp 0.7s ease-out both;
+      }
+
+      .animate-fadeUp-delay-1 {
+        animation: fadeUp 0.7s ease-out 0.1s both;
+      }
+
+      .animate-fadeUp-delay-2 {
+        animation: fadeUp 0.7s ease-out 0.2s both;
+      }
+
+      .animate-floatSoft {
+        animation: floatSoft 5s ease-in-out infinite;
+      }
+
+      .animate-slideInRight {
+        animation: slideInRight 0.7s ease-out both;
+      }
+
+      .mobile-menu {
+        transition: opacity 180ms ease, transform 180ms ease, max-height 220ms ease;
+      }
+
+      .mobile-menu[hidden] {
+        display: none;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #06b6d4 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+      }
+
+      .btn-base {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border-radius: 9999px;
+        padding: 0.7rem 1.15rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1;
+        transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .btn-base:focus-visible {
+        outline: 2px solid rgba(236, 72, 153, 0.35);
+        outline-offset: 3px;
+      }
+
+      .btn-primary {
+        --btn-grad-start: #ec4899; /* pink-500 */
+        --btn-grad-end: #8b5cf6;   /* violet-500 */
+        background: linear-gradient(135deg, var(--btn-grad-start) 0%, var(--btn-grad-end) 100%);
+        color: #fff;
+        box-shadow: 0 16px 30px rgba(236, 72, 153, 0.18);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 34px rgba(139, 92, 246, 0.22);
+      }
+
+      .btn-secondary {
+        /* kept as alias for compatibility */
+        background: linear-gradient(135deg, var(--btn-grad-start) 0%, var(--btn-grad-end) 100%);
+        color: #fff;
+      }
+
+      .btn-secondary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 34px rgba(139, 92, 246, 0.22);
+      }
+
+      .btn-soft {
+        /* visual alias to primary for unified appearance */
+        background: linear-gradient(135deg, var(--btn-grad-start) 0%, var(--btn-grad-end) 100%);
+        color: #fff;
+        border: none;
+      }
+
+      .btn-soft:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 34px rgba(139, 92, 246, 0.22);
+      }
+
+      .surface-panel {
+        background: var(--surface);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(226, 232, 240, 0.85);
+      }
+
+      .text-muted {
+        color: var(--text-muted);
+      }
+
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 1.9rem;
+          line-height: 1.15;
+        }
+
+        h2 {
+          font-size: 1.45rem;
+          line-height: 1.2;
+        }
+
+        h3 {
+          font-size: 1.05rem;
+          line-height: 1.25;
+        }
+
+        .btn-base {
+          width: 100%;
+          white-space: normal;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+    <body class="bg-gradient-to-br from-slate-50 via-white to-pink-50 text-slate-900 antialiased" style="margin: 0; padding: 0;">
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-24 left-[-6rem] h-80 w-80 rounded-full bg-pink-300/25 blur-3xl"></div>
+      <div class="absolute top-36 right-[-5rem] h-96 w-96 rounded-full bg-violet-300/20 blur-3xl"></div>
+      <div class="absolute bottom-0 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-violet-200/15 blur-3xl"></div>
+      <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.18) 1px, transparent 0); background-size: 24px 24px;"></div>
+    </div>
+    <header class="site-header sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="w-full flex items-center justify-between gap-3 sm:w-auto">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-pink-600 to-violet-500 text-white flex items-center justify-center font-bold shadow-lg animate-fadeUp text-sm">KE</div>
+            <div class="min-w-0">
+              <h1 class="text-lg sm:text-xl font-semibold truncate">Khaoula Elhichami</h1>
+              <p class="text-xs sm:text-sm text-slate-500 truncate">Ingénieur logiciel en formation</p>
+            </div>
+          </div>
+
+          <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white/95 p-2.5 text-slate-700 shadow-sm transition hover:border-pink-300 hover:bg-pink-50 hover:text-pink-700 md:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
+            <svg id="mobile-menu-open-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="mobile-menu-close-icon" xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-1 text-sm text-slate-600 font-medium">
+          <a href="#about" class="px-4 py-2 rounded-lg hover:bg-pink-50 hover:text-pink-700 transition-all duration-300">À propos</a>
+          <a href="#projects" class="px-4 py-2 rounded-lg hover:bg-pink-50 hover:text-pink-700 transition-all duration-300">Projets</a>
+          <a href="#cv" class="px-4 py-2 rounded-lg hover:bg-pink-50 hover:text-pink-700 transition-all duration-300">CV</a>
+         <a href="mailto:khaoulaelhichami22@gmail.com" aria-label="Contacter par email" class="btn-base btn-primary ml-2">Contact</a>
+        </nav>
+
+        <nav id="mobile-menu" aria-label="Navigation mobile" hidden class="mobile-menu w-full rounded-xl border border-slate-200 bg-white/95 p-3 text-sm text-slate-700 shadow-lg md:hidden">
+          <div class="grid grid-cols-2 gap-2">
+          <a href="#about" class="btn-base btn-primary rounded-xl justify-center py-2.5">À propos</a>
+          <a href="#projects" class="btn-base btn-primary rounded-xl justify-center py-2.5">Projets</a>
+          <a href="#cv" class="btn-base btn-primary rounded-xl justify-center py-2.5">CV</a>
+          <a href="mailto:khaoulaelhichami22@gmail.com" aria-label="Contacter par email" class="btn-base btn-primary rounded-xl justify-center py-2.5">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-8 animate-fadeUp">
+      <!-- Profile -->
+      <aside class="md:col-span-1 surface-panel rounded-3xl p-5 sm:p-6 shadow-[0_10px_35px_rgba(14,165,255,0.08)] animate-fadeUp-delay-1">
+        <div class="flex flex-col items-center">
+            <div class="relative w-24 h-24 sm:w-28 sm:h-28">
+              <img src="profile.jpeg" alt="Photo de profil de Khaoula Elhichami" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-4 border-white shadow-lg bg-slate-100 animate-floatSoft" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="hidden w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-pink-400 via-violet-400 to-pink-500 items-center justify-center text-white text-2xl font-bold border-4 border-white shadow-lg animate-floatSoft">KE</div>
+            </div>
+          <h2 class="mt-4 text-lg font-semibold">Khaoula Elhichami</h2>
+          <p class="text-sm text-slate-500">Étudiante — ENSA Khouribga</p>
+        </div>
+
+        <div class="mt-6 space-y-3 text-sm">
+          <p class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5.5a2 2 0 012-2h2.2a1 1 0 01.98.79l.5 2.5a1 1 0 01-.27.9L7.6 10.6a11 11 0 005.8 5.8l2.1-1.9a1 1 0 01.9-.27l2.5.5a1 1 0 01.79.98V19.5a2 2 0 01-2 2H19A16 16 0 015 5z"/></svg>
+            <a href="tel:+212625961067" class="text-slate-700 hover:underline">+212-625961067</a>
+          </p>
+
+          <p class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <a href="mailto:khaoulaelhichami22@gmail.com" class="text-slate-700 hover:underline">khaoulaelhichami22@gmail.com</a>
+          </p>
+
+          <p class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-violet-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 10c0 6-9 13-9 13s-9-7-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span class="text-slate-700">Khouribga, Maroc</span>
+          </p>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-sm font-semibold text-slate-700">Compétences</h3>
+          <ul class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700">
+            <li class="px-3 py-1.5 rounded-full bg-pink-50 border border-pink-100">HTML / CSS</li>
+            <li class="px-3 py-1.5 rounded-full bg-pink-50 border border-pink-100">PHP</li>
+            <li class="px-3 py-1.5 rounded-full bg-pink-50 border border-pink-100">JavaScript</li>
+            <li class="px-3 py-1.5 rounded-full bg-pink-50 border border-pink-100">MySQL</li>
+            <li class="px-3 py-1.5 rounded-full bg-pink-50 border border-pink-100">Java / C++</li>
+          </ul>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-sm font-semibold text-slate-700">Langues</h3>
+          <ul class="mt-2 text-sm text-slate-600">
+            <li>Français — Très bon</li>
+            <li>Anglais — Moyen</li>
+            <li>Arabe — Langue maternelle</li>
+          </ul>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-sm font-semibold text-slate-700">Réseaux</h3>
+          <div class="mt-3 flex items-center justify-center gap-3">
+            <a href="https://www.linkedin.com/in/khaoula-elhichami-23744233a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center border border-pink-100 hover:bg-pink-600 hover:text-white transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4v13h-4V8zM8 8h3.8v1.7h.1c.5-.9 1.7-1.8 3.5-1.8C19.8 7.9 21 9.7 21 13.1V21h-4v-6.1c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H8V8z"/></svg>
+            </a>
+
+            <a href="https://github.com/khaoulaelhichami" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="w-9 h-9 rounded-full bg-slate-50 text-slate-700 flex items-center justify-center border border-slate-100 hover:bg-slate-800 hover:text-white transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.92.57.1.78-.25.78-.55 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.55-3.88-1.55-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.73-1.54-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.19.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.5 3.17-1.19 3.17-1.19.63 1.58.23 2.75.11 3.04.74.81 1.19 1.84 1.19 3.1 0 4.44-2.71 5.41-5.29 5.7.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .3.21.66.79.55C20.71 21.39 24 17.08 24 12 24 5.65 18.35.5 12 .5z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Content -->
+      <section class="md:col-span-3 space-y-4 sm:space-y-6">
+        <section class="relative overflow-hidden rounded-[2rem] border border-slate-200/70 bg-slate-950 px-6 py-6 text-white shadow-[0_20px_60px_rgba(15,23,42,0.18)] sm:px-8 sm:py-8 animate-fadeUp-delay-1">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(99,102,241,0.22),transparent_38%)]"></div>
+          <div class="absolute -right-10 top-1/2 h-36 w-36 -translate-y-1/2 rounded-full border border-white/10"></div>
+          <div class="relative grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center">
+            <div>
+              <span class="inline-flex items-center rounded-full border border-violet-400/30 bg-violet-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-violet-100">Portfolio créatif</span>
+              <h2 class="mt-4 text-3xl font-semibold leading-tight sm:text-4xl">Portfolio personnel — projets et compétences</h2>
+              <p class="mt-4 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">Présentation de mes réalisations full‑stack, optimisées pour une lecture claire sur mobile et ordinateur.</p>
+              <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center">
+                <a href="cv.pdf" download class="btn-base btn-primary">Télécharger CV</a>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Focus</p>
+                <p class="mt-2 text-sm font-medium text-white">Full‑stack</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Style</p>
+                <p class="mt-2 text-sm font-medium text-white">Clair et moderne</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">École</p>
+                <p class="mt-2 text-sm font-medium text-white">ENSA Khouribga</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Statut</p>
+                <p class="mt-2 text-sm font-medium text-white">Ouverte aux stages</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="surface-panel rounded-3xl p-5 sm:p-6 shadow-[0_10px_35px_rgba(14,165,255,0.06)] animate-fadeUp-delay-1">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+            <h2 class="text-lg font-semibold">À propos</h2>
+          </div>
+
+          <div class="mt-4">
+            <p class="text-sm text-muted leading-6">Étudiante en génie logiciel à l'ENSA Khouribga, je travaille comme développeuse full‑stack : je conçois et réalise des applications avec un souci de clarté, de fiabilité et d'organisation des données.</p>
+          </div>
+        </section>
+        <section id="projects" class="surface-panel rounded-3xl p-5 sm:p-6 shadow-[0_10px_35px_rgba(14,165,255,0.06)] animate-fadeUp-delay-1">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+            <h2 class="text-lg font-semibold">Projets récents</h2>
+            <p class="text-sm text-slate-500">3 projets</p>
+          </div>
+
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <!-- Project 1 -->
+            <article class="group relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white/95 shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.14)] animate-fadeUp-delay-1">
+              <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-pink-500 via-violet-500 to-pink-600"></div>
+              <div class="relative h-36 sm:h-40 bg-gradient-to-br from-pink-100 via-violet-50 to-pink-100 px-4 py-4 sm:px-5 sm:py-5 flex flex-col justify-between">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-700 shadow-sm">Projet 01</span>
+                  <span class="inline-flex items-center rounded-full bg-pink-600/10 px-3 py-1 text-[11px] font-semibold text-pink-700">Web</span>
+                </div>
+                <div class="relative">
+                  <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/35 blur-2xl"></div>
+                  <p class="relative text-lg font-semibold text-slate-800">Parascolaire</p>
+                  <p class="relative mt-1 max-w-xs text-sm text-slate-600">Gestion des clubs, activités et inscriptions étudiantes.</p>
+                </div>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h3 class="text-base font-semibold text-slate-900">Gestion parascolaire</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Le projet parascolaires est une application web dédiée à la gestion des activités parascolaires au sein d’un établissement. Elle permet de gérer les clubs et les différentes activités proposées, ainsi que les inscriptions des étudiants aux clubs. Cette solution facilite l’organisation et le suivi des activités de manière simple et efficace.</p>
+                <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">HTML</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">CSS</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">JavaScript</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">PHP</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">MySQL</span>
+                </div>
+                <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <p class="text-xs text-slate-400">Solution web orientée suivi et organisation.</p>
+                  <a href="https://github.com/khaoulaelhichami/projet-parascolaire" target="_blank" class="btn-base btn-primary">Voir le dépôt</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="group relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white/95 shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.14)] animate-fadeUp-delay-2">
+              <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-pink-500 via-violet-500 to-pink-600"></div>
+              <div class="relative h-36 sm:h-40 bg-gradient-to-br from-pink-100 via-violet-50 to-pink-100 px-4 py-4 sm:px-5 sm:py-5 flex flex-col justify-between">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-700 shadow-sm">Projet 02</span>
+                  <span class="inline-flex items-center rounded-full bg-pink-600/10 px-3 py-1 text-[11px] font-semibold text-pink-700">Web app</span>
+                </div>
+                <div class="relative">
+                  <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/35 blur-2xl"></div>
+                  <p class="relative text-lg font-semibold text-slate-800">GymVue</p>
+                  <p class="relative mt-1 max-w-xs text-sm text-slate-600">Abonnements, paiements et réservation des cours.</p>
+                </div>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h3 class="text-base font-semibold text-slate-900">Gestion d’une salle de sport</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Le projet GymVue est une application web dédiée à la gestion d’une salle de sport. Elle permet de gérer les utilisateurs, les abonnements, les paiements ainsi que les réservations des cours en ligne. Cette solution facilite l’organisation et améliore la gestion quotidienne de la salle de sport.</p>
+                <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Django</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">JWT</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Vue.js</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Vite</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Tailwind</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">MySQL</span>
+                </div>
+                <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <p class="text-xs text-slate-400">Application web orientée gestion quotidienne et réservation.</p>
+                  <a href="https://github.com/khaoulaelhichami/projet-salle-de-sport" target="_blank" class="btn-base btn-primary">Voir le dépôt</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="group relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white/95 shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.14)] animate-fadeUp-delay-2">
+              <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-pink-500 via-violet-500 to-pink-600"></div>
+              <div class="relative h-36 sm:h-40 bg-gradient-to-br from-pink-100 via-violet-50 to-pink-100 px-4 py-4 sm:px-5 sm:py-5 flex flex-col justify-between">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-700 shadow-sm">Projet 03</span>
+                  <span class="inline-flex items-center rounded-full bg-pink-600/10 px-3 py-1 text-[11px] font-semibold text-pink-700">Desktop</span>
+                </div>
+                <div class="relative">
+                  <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-white/35 blur-2xl"></div>
+                  <p class="relative text-lg font-semibold text-slate-800">Employés</p>
+                  <p class="relative mt-1 max-w-xs text-sm text-slate-600">Gestion RH, salaires et congés.</p>
+                </div>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h3 class="text-base font-semibold text-slate-900">Gestion employés</h3>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Le projet employees est une application desktop conçue pour la gestion des employés au sein d’une entreprise. Elle permet de gérer les informations des employés, les salaires ainsi que les demandes de congés. Cette solution facilite l’administration du personnel et améliore l’organisation des ressources humaines.</p>
+                <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">Java</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">JavaFX</span>
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1">MySQL</span>
+                </div>
+                <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <p class="text-xs text-slate-400">Application desktop pour l’organisation RH.</p>
+                  <a href="https://github.com/khaoulaelhichami/projet-employees" target="_blank" class="btn-base btn-primary">Voir le dépôt</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="cv" class="surface-panel rounded-3xl p-5 sm:p-6 shadow-[0_10px_35px_rgba(244,114,182,0.10)] animate-fadeUp-delay-2">
+          <h2 class="text-lg font-semibold">CV & Disponibilité</h2>
+          <p class="text-sm text-muted mt-2 leading-6">Cycle d'ingénierie en génie logiciel — ENSA Khouribga (2023–2028).</p>
+          <p class="text-sm text-muted mt-2 leading-6">Disponible pour stage et collaboration en développement logiciel. Contact via email ou LinkedIn.</p>
+        </section>
+      </section>
+    </main>
+
+    <footer class="mt-8 sm:mt-12 mb-6 sm:mb-8 text-center text-sm text-slate-500 px-4 sm:px-6">
+      © 2026 Khaoula Elhichami — Portfolio
+    </footer>
+
+    <script>
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuOpenIcon = document.getElementById('mobile-menu-open-icon');
+      const mobileMenuCloseIcon = document.getElementById('mobile-menu-close-icon');
+
+      if (mobileMenuButton && mobileMenu && mobileMenuOpenIcon && mobileMenuCloseIcon) {
+        const setMenuState = (isOpen) => {
+          mobileMenu.hidden = !isOpen;
+          mobileMenuButton.setAttribute('aria-expanded', String(isOpen));
+          mobileMenuButton.setAttribute('aria-label', isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
+          mobileMenuOpenIcon.classList.toggle('hidden', isOpen);
+          mobileMenuCloseIcon.classList.toggle('hidden', !isOpen);
+        };
+
+        mobileMenuButton.addEventListener('click', () => {
+          setMenuState(mobileMenu.hidden);
+        });
+
+        mobileMenu.addEventListener('click', (event) => {
+          if (event.target instanceof HTMLAnchorElement) {
+            setMenuState(false);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

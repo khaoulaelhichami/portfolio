@@ -1,0 +1,40 @@
+:root{
+	--bg: 255 255 255;
+	--muted: #94a3b8;
+	--primary: #6366f1;
+	--accent: #06b6d4;
+	--glass: rgba(255,255,255,0.7);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;padding:0}
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;}
+
+/* Header */
+.site-header{transition:transform .45s cubic-bezier(.2,.9,.3,1),box-shadow .35s;}
+.site-header:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(99,102,241,0.1)}
+
+/* Card Hover Effect */
+.card-hover{position:relative;transition:all .3s cubic-bezier(.23,1,.32,1);will-change:transform}
+.card-hover:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(99,102,241,0.15)}
+
+/* Gradient Text */
+.gradient-text{background:linear-gradient(135deg,#6366f1 0%,#3b82f6 50%,#06b6d4 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Buttons */
+.modern-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.48rem .9rem;border-radius:8px;font-weight:600;letter-spacing:.01em;transition:transform .18s ease,box-shadow .18s ease;box-shadow:0 8px 20px rgba(99,102,241,0.1)}
+.modern-btn:focus{outline:2px solid rgba(99,102,241,0.2);outline-offset:3px}
+.modern-btn:hover{transform:translateY(-3px);box-shadow:0 22px 48px rgba(99,102,241,0.15)}
+
+/* Small utilities */
+.fade-in-up{animation:fadeInUp .7s ease both}
+.float-soft{animation:floatSoft 6s ease-in-out infinite}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes floatSoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+@media (prefers-reduced-motion:reduce){
+	.modern-card,.modern-btn,.fade-in-up,.float-soft,.modern-hero{animation:none;transition:none}
+}
+
+
